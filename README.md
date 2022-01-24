@@ -11,7 +11,7 @@ Usage is same as [dockcross](https://github.com/dockcross/dockcross#usage). Use 
 
 ```bash
 # create helper scripts
-docker run --rm wesleych3n/pi-cross:armv7-8.3.0 > ./armv7-8.3.0
+docker run --rm wesleych3n/pi-cross:armv7-buster-8.3.0 > ./armv7-8.3.0
 
 # grant execution mode
 chmod +x ./armv7-8.3.0
@@ -48,5 +48,5 @@ For example, mount host path:
 
 | Toolchains           | GCC versions                                                                         |
 | :-:                  | :-:                                                                                  |
-| armv7(Buster 32-bit) | [8.3.0](https://github.com/WesleyCh3n/pi-cross/tree/main/armv7/8.3.0), 9.4.0, 10.3.0 |
-| arm64(Buster 64-bit) | [8.3.0](https://github.com/WesleyCh3n/pi-cross/tree/main/arm64/8.3.0), 9.4.0, 10.3.0 |
+| armv7(Buster 32-bit) | 8.3.0, 9.4.0, 10.3.0 |
+| arm64(Buster 64-bit) | 8.3.0, 9.4.0, 10.3.0 |

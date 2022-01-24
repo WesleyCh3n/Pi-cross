@@ -1,5 +1,8 @@
 # Pi-cross
 
+![armv7-buster](https://github.com/wesleych3n/pi-cross/actions/workflows/armv7-buster.yml/badge.svg)
+![arm64-buster](https://github.com/wesleych3n/pi-cross/actions/workflows/arm64-buster.yml/badge.svg)
+
 This is raspberry pi compiling toolchains (rpi compatible GCC version) in docker images based on [dockcross base image](https://github.com/dockcross/dockcross) and [rpi toolchains](https://github.com/abhiTronix/raspberry-pi-cross-compilers).
 
 ## 📦️ Usage

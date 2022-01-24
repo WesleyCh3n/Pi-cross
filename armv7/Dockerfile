@@ -1,6 +1,7 @@
 FROM dockcross/base:latest
 
-ENV DEFAULT_DOCKCROSS_IMAGE wesleych3n/pi-cross:armv7-8.3.0
+ARG GCC_VER
+ENV DEFAULT_DOCKCROSS_IMAGE wesleych3n/pi-cross:armv7-${GCC_VER}
 
 ENV CROSS_TRIPLE arm-linux-gnueabihf
 ENV XCC_PREFIX /usr/local
@@ -17,11 +18,11 @@ ENV AS=${CROSS_ROOT}/bin/${CROSS_TRIPLE}-as \
 ENV PKG_CONFIG_PATH /usr/lib/pkgconfig
 ENV PATH ${CROSS_ROOT}/bin:$PATH
 ENV LD_LIBRARY_PATH ${CROSS_ROOT}/lib:$LD_LIBRARY_PATH
-ENV GCCPATH ${CROSS_ROOT}/libexec/gcc/${CROSS_TRIPLE}/8.3.0
+ENV GCCPATH ${CROSS_ROOT}/libexec/gcc/${CROSS_TRIPLE}/${GCC_VER}
 ENV ARFLAGS="--plugin $GCCPATH/liblto_plugin.so"
 ENV RANLIBFLAGS="--plugin $GCCPATH/liblto_plugin.so"
 
-COPY cross-pi-gcc-8.3.0-2 ${CROSS_ROOT}
+COPY cross-pi-gcc-${GCC_VER}-2 ${CROSS_ROOT}
 # Linux kernel cross compilation variables
 ENV CROSS_COMPILE ${CROSS_TRIPLE}-
 ENV ARCH arm

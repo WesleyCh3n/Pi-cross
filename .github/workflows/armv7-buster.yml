@@ -16,6 +16,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    environment: docker
     strategy:
       matrix:
         arch_name:
@@ -42,7 +43,6 @@ jobs:
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
         run: |
-          echo "test $DOCKER_USER"
           docker build --build-arg GCC_VER=${{ matrix.arch_name.gcc_version }} \
                        -f ./armv7/Dockerfile \
                        -t $DOCKER_USER/pi-cross:armv7-buster-${{ matrix.arch_name.gcc_version }} \

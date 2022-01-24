@@ -38,6 +38,7 @@ jobs:
         run: |
           wget -q ${{ matrix.arch_name.toolchain }}
           tar xf cross-gcc-${{ matrix.arch_name.gcc_version }}-pi_3+.tar.gz
+          echo ${{ secrets.DOCKER_USER }}
       - name: docker build
         run: |
           docker build --build-arg GCC_VER=${{ matrix.arch_name.gcc_version }} \

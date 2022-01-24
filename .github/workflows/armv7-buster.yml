@@ -33,7 +33,8 @@ jobs:
             }
     steps:
       - uses: actions/checkout@v2
-      - name: Run a multi-line script
+      - name: Download toolchain
         run: |
           wget -q ${{ matrix.arch_name.toolchain }}
+          tar xf cross-gcc-${{ matrix.arch_name.gcc_version }}-pi_3+.tar.gz
           ls

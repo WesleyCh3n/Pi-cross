@@ -10,7 +10,7 @@ Usage is same as [dockcross](https://github.com/dockcross/dockcross#usage). Use 
 # create helper scripts
 docker run --rm wesleych3n/pi-cross:armv7-8.3.0 > ./armv7-8.3.0
 
-# grant execute mode
+# grant execution mode
 chmod +x ./armv7-8.3.0
 
 # (Optional) put scripts into $PATH. Such as:

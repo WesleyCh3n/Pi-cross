@@ -40,7 +40,7 @@ jobs:
           tar xf cross-gcc-${{ matrix.arch_name.gcc_version }}-pi_3+.tar.gz
       - name: docker build
         run: |
-          docker build -f ./armv7/${{ matrix.arch_name.gcc_version }}/Dockerfile -t  wesely-armv7-${{ matrix.arch_name.gcc_version }} ./src/
+          docker build -f ./armv7/${{ matrix.arch_name.gcc_version }}/Dockerfile -t  wesely-armv7-${{ matrix.arch_name.gcc_version }} ./
       - name: verify
         run: |
           docker images

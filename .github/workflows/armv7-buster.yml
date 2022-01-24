@@ -38,11 +38,11 @@ jobs:
         run: |
           wget -q ${{ matrix.arch_name.toolchain }}
           tar xf cross-gcc-${{ matrix.arch_name.gcc_version }}-pi_3+.tar.gz
-          echo
       - name: docker build
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
         run: |
+          echo $DOCKER_USER
           docker build --build-arg GCC_VER=${{ matrix.arch_name.gcc_version }} \
                        -f ./armv7/Dockerfile \
                        -t $DOCKER_USER/pi-cross:armv7-buster-${{ matrix.arch_name.gcc_version }} \

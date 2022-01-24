@@ -42,8 +42,16 @@ jobs:
         run: |
           docker build --build-arg GCC_VER=${{ matrix.arch_name.gcc_version }} \
                        -f ./armv7/Dockerfile \
-                       -t wesely-armv7-${{ matrix.arch_name.gcc_version }} \
+                       -t ${{ secrets.DOCKER_USER }}/pi-cross:armv7-buster-${{ matrix.arch_name.gcc_version }} \
                        ./
       - name: verify
         run: |
           docker images
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - name: docker push
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/pi-cross:armv7-buster-${{ matrix.arch_name.gcc_version }}

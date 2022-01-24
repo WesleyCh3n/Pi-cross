@@ -1,4 +1,4 @@
-name: armv7-build
+name: armv7-buster-build
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -22,14 +22,17 @@ jobs:
         arch_name:
           - {
               gcc_version: "8.3.0",
+              pi_os: "buster",
               toolchain: "https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compiler%20Toolchains/Buster/GCC%208.3.0/Raspberry%20Pi%203A%2B%2C%203B%2B%2C%204/cross-gcc-8.3.0-pi_3%2B.tar.gz",
             }
           - {
               gcc_version: "9.4.0",
+              pi_os: "buster",
               toolchain: "https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compiler%20Toolchains/Buster/GCC%209.4.0/Raspberry%20Pi%203A%2B%2C%203B%2B%2C%204/cross-gcc-9.4.0-pi_3%2B.tar.gz",
             }
           - {
               gcc_version: "10.3.0",
+              pi_os: "buster",
               toolchain: "https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compiler%20Toolchains/Buster/GCC%2010.3.0/Raspberry%20Pi%203A%2B%2C%203B%2B%2C%204/cross-gcc-10.3.0-pi_3%2B.tar.gz",
             }
     steps:
@@ -44,8 +47,9 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
         run: |
           docker build --build-arg GCC_VER=${{ matrix.arch_name.gcc_version }} \
+                       --build-arg PI_OS=${{ matrix.arch_name.pi_os }} \
                        -f ./armv7/Dockerfile \
-                       -t $DOCKER_USER/pi-cross:armv7-buster-${{ matrix.arch_name.gcc_version }} \
+                       -t $DOCKER_USER/pi-cross:armv7-${{ matrix.arch_name.pi_os }}-${{ matrix.arch_name.gcc_version }} \
                        ./
       - name: verify
         run: |

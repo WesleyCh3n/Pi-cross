@@ -1,7 +1,8 @@
 FROM dockcross/base:latest
 
 ARG GCC_VER
-ENV DEFAULT_DOCKCROSS_IMAGE wesleych3n/pi-cross:armv7-${GCC_VER}
+ARG PI_OS
+ENV DEFAULT_DOCKCROSS_IMAGE wesleych3n/pi-cross:armv7-${PI_OS}-${GCC_VER}
 
 ENV CROSS_TRIPLE arm-linux-gnueabihf
 ENV XCC_PREFIX /usr/local

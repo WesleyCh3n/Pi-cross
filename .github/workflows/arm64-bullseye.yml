@@ -1,4 +1,4 @@
-name: arm64-buster-build
+name: arm64-bullseye-build
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
